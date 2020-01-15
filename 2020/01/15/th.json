@@ -1,0 +1,8 @@
+{
+    "title": "有几个PAT",
+    "detail": "字符串APPAPT中包含了两个单词“PAT”，其中第一个PAT是第2位(P),第4位(A),第6位(T)；\r\n第二个PAT是第3位(P),第4位(A),第6位(T)。\r\n现给定字符串，问一共可以形成多少个PAT？\r\n\r\n### 输入格式：\r\n\r\n输入只有一行，包含一个字符串，长度不超过10^5，只包含 **P**、**A**、**T** 三种字母。\r\n\r\n### 输出格式：\r\n\r\n在一行中输出给定字符串中包含多少个**PAT**。由于结果可能比较大，只输出对 1000000007 取余数的结果。\r\n\r\n### 输入样例：\r\n```in\r\nAPPAPT\r\n```\r\n\r\n### 输出样例：\r\n```out\r\n2\r\n```\r\n",
+    "grade": 0,
+    "difficulty": 1,
+    "idea": "要想知道构成多少个PAT，那么遍历字符串后对于每一A，它前面的P的个数和它后面的T的个数的乘积就是能构成的PAT的个数。然后把对于每一个A的结果相加即可～～辣么就简单啦，只需要先遍历字符串数一数有多少个T～～然后每遇到一个T呢～～countt–;每遇到一个P呢，countp++;然后一遇到字母A呢就countt * countp～～把这个结果累加到result中～～最后输出结果就好",
+    "answer": "### C++\r\n```cpp\r\n#include <iostream>\r\n#include <string>\r\nusing namespace std;\r\nint main() {\r\n    string s;\r\n    cin >> s;\r\n    int len = s.length(), result = 0, countp = 0, countt = 0;\r\n    for (int i = 0; i < len; i++) {\r\n        if (s[i] == 'T')\r\n            countt++;\r\n    }\r\n    for (int i = 0; i < len; i++) {\r\n        if (s[i] == 'P') countp++;\r\n        if (s[i] == 'T') countt--;\r\n        if (s[i] == 'A') result = (result + (countp * countt) % 1000000007) % 1000000007;\r\n    }\r\n    cout << result;\r\n    return 0;\r\n}\r\n```"
+}
