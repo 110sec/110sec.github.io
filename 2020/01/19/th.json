@@ -1,0 +1,8 @@
+{
+  "title": "划拳",
+  "detail": "划拳是古老中国酒文化的一个有趣的组成部分。酒桌上两人划拳的方法为：每人口中喊出一个数字，同时用手比划出一个数字。如果谁比划出的数字正好等于两人喊出的数字之和，谁就赢了，输家罚一杯酒。两人同赢或两人同输则继续下一轮，直到唯一的赢家出现。\r\n\r\n下面给出甲、乙两人的划拳记录，请你统计他们最后分别喝了多少杯酒。\r\n\r\n### 输入格式：\r\n\r\n输入第一行先给出一个正整数 N（≤100），随后 N 行，每行给出一轮划拳的记录，格式为：\r\n```\r\n甲喊 甲划 乙喊 乙划\r\n```\r\n其中**喊**是喊出的数字，**划**是划出的数字，均为不超过 100 的正整数（两只手一起划）。\r\n\r\n### 输出格式：\r\n\r\n在一行中先后输出甲、乙两人喝酒的杯数，其间以一个空格分隔。\r\n\r\n### 输入样例：\r\n```in\r\n5\r\n8 10 9 12\r\n5 10 5 10\r\n3 8 5 12\r\n12 18 1 13\r\n4 16 12 15\r\n```\r\n\r\n### 输出样例：\r\n```out\r\n1 2\r\n```\r\n",
+  "grade": 0,
+  "difficulty": 0,
+  "idea": "jia和yi分别代表甲乙两人喝酒的杯数，sum表示甲喊和乙喊之和，如果sum == 甲划，并且sum != 乙划，表示乙输了，乙喝酒杯数yi++，反之jia++，最后输出jia和yi的值～",
+  "answer": "### C++\r\n```cpp\r\n#include <iostream>\r\nusing namespace std;\r\nint main() {\r\n  int N; cin >> N;\r\n  int cnt_a = 0, cnt_b = 0;\r\n  while (N--) {\r\n    int a, jia, b, yi;\r\n    cin >> a >> jia >> b >> yi;\r\n    if (jia == a+b && yi != a+b) {\r\n      cnt_b++;\r\n    } else if (jia != a+b && yi == a+b) {\r\n      cnt_a++;\r\n    }\r\n  }\r\n  cout << cnt_a << \" \" << cnt_b << endl;\r\n  return 0;\r\n}\r\n```"
+}
